@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranit Kamble - AI Master's Graduate | Portfolio & Mentoring</title>
+    <meta name="description" content="Pranit Kamble - AI Master's Graduate from Queen Mary University of London. Specializing in Deep Learning, Computer Vision, IoT & Robotics. Book mentoring sessions.">
+    <meta name="keywords" content="AI, Machine Learning, Deep Learning, Computer Vision, IoT, Robotics, Mentoring">
+    <meta property="og:title" content="Pranit Kamble - AI Expert & Mentor">
+    <meta property="og:description" content="Master's in AI from QMUL. Specializing in Deep Learning, Computer Vision, and Robotics.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        (function() {
+            try {
+                const saved = localStorage.getItem("pk-theme");
+                const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const theme = (saved === "light" || saved === "dark") ? saved : (prefersDark ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+            } catch(e) {}
+        })();
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: light dark;
+            --font-size-base: 16px;
+            --font-size-large: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 28px;
+            --font-size-4xl: 32px;
+        }
+
+        html[data-theme="dark"] {
+            --primary: #8B7355;
+            --secondary: #D4A574;
+            --accent: #C9A876;
+            --dark: #3D3228;
+            --text: #F5EFE7;
+            --text-gray: #A89968;
+            --gradient-glow: linear-gradient(135deg, #D4A574, #8B7355, #C9A876);
+            --bg: #2A231D;
+            --card-bg: rgba(212, 165, 116, 0.08);
+            --nav-bg: rgba(42, 35, 29, 0.95);
+        }
+
+        html[data-theme="light"] {
+            --primary: #8B7355;
+            --secondary: #A89968;
+            --accent: #D4A574;
+            --dark: #FAF8F3;
+            --text: #3D3228;
+            --text-gray: #6B6B5B;
+            --gradient-glow: linear-gradient(135deg, #D4A574, #8B7355, #C9A876);
+            --bg: #FAF8F3;
+            --card-bg: rgba(212, 165, 116, 0.05);
+            --nav-bg: rgba(250, 248, 243, 0.98);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.6;
+            font-size: var(--font-size-base);
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1.2rem 0;
+            backdrop-filter: blur(20px);
+            background: var(--nav-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .mentor-btn {
+            padding: 0.7rem 1.8rem;
+            background: var(--gradient-glow);
+            color: var(--text);
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mentor-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            padding-top: 150px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient-glow);
+            color: var(--text);
+            box-shadow: 0 4px 15px rgba(123, 47, 247, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(123, 47, 247, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .profile-img {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--dark);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 7rem 3rem;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 245, 255, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 47, 247, 0.1));
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 0px;
+            background: var(--gradient-glow);
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 0 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 60px rgba(0, 245, 255, 0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(0, 245, 255, 0.25);
+            transform: scale(1.02);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--gradient-glow);
+            color: var(--text);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .features-list li {
+            color: var(--text-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.8rem 1.8rem 1.8rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        footer {
+            background: rgba(42, 35, 29, 0.95);
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        html[data-theme="light"] footer {
+            background: rgba(250, 248, 243, 0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                margin-left: 80px;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BOOKING MODAL -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBooking()">✕</button>
+            <h2>Book Your Mentoring Session</h2>
+            <form onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label>Select Package *</label>
+                    <select id="package" required onchange="updatePrice()">
+                        <option value="">Choose a package...</option>
+                        <option value="Starter">Starter Pack - ₹2,999</option>
+                        <option value="Professional">Professional Package - ₹7,999</option>
+                        <option value="Premium">Premium Plus - ₹14,999</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" required placeholder="+91 XXXXX XXXXX">
+                </div>
+                <div class="form-group">
+                    <label>Target Universities *</label>
+                    <input type="text" id="targets" required placeholder="e.g., USA, UK, Canada">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date *</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time *</label>
+                    <input type="time" id="time" required>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(123, 47, 247, 0.2)); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">Amount to Pay:</p>
+                    <p id="amountDisplay" style="font-size: 1.8rem; color: var(--text); font-family: 'Orbitron', sans-serif; font-weight: 900;">₹0</p>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAYMENT MODAL -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePayment()">✕</button>
+            <h2>Payment Details</h2>
+            <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(123, 47, 247, 0.15)); border: 1px solid var(--primary); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                <h4 style="color: var(--primary); margin-bottom: 1.5rem;">💳 Payment Methods</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.8rem;">📱 UPI Payment</p>
+                        <p style="color: var(--text-gray); font-family: 'Courier New', monospace; background: rgba(255, 255, 255, 0.05); padding: 0.6rem; border-radius: 6px; font-size: 0.85rem; word-break: break-all;">9359459188@ybl</p>
+                        <button type="button" onclick="copyText('pranitai.mentoring@okhdfcbank')" style="background: var(--primary); color: var(--dark); border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 700; margin-top: 0.8rem; font-size: 0.85rem; width: 100%;">Copy UPI</button>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.8rem;">🔵 PayPal</p>
+                        <p style="color: var(--text-gray); font-family: 'Courier New', monospace; background: rgba(255, 255, 255, 0.05); padding: 0.6rem; border-radius: 6px; font-size: 0.85rem; word-break: break-all;">pranitkambleukofficial@gmail.com</p>
+                        <a href="https://paypal.me/pranitkamble" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: var(--primary); color: var(--dark); border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 700; margin-top: 0.8rem; font-size: 0.85rem; text-decoration: none; width: calc(100% - 2.2rem); text-align: center;">Open PayPal</a>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.8rem;">📲 PhonePe</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.8rem;"><strong>+91 9359459188</strong></p>
+                        <button type="button" onclick="openPhonePe()" style="background: var(--primary); color: var(--dark); border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem; width: 100%;">Open PhonePe</button>
+                    </div>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(123, 47, 247, 0.15)); border: 1px solid var(--primary); border-radius: 16px; padding: 2rem; margin-top: 1.5rem;">
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">💬 Direct Contact</h4>
+                <p style="color: var(--text-gray);"><strong>Email:</strong> pranitkambleofficial@gmail.com</p>
+                <p style="color: var(--text-gray); margin-top: 0.5rem;"><strong>Phone:</strong> +91 9359459188 | +44 7823781644</p>
+            </div>
+            <button type="button" class="btn btn-secondary" style="width: 100%; margin-top: 2rem;" onclick="closePayment()">Back</button>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('portfolio')">PRANIT.K</div>
+            <ul>
+                <li><a onclick="showPage('portfolio')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a onclick="scrollToSection('education')">Education</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="mentor-btn" onclick="showPage('mentoring')">🎓 Book Mentoring</button>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PORTFOLIO PAGE -->
+    <div id="portfolio" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>PRANIT KAMBLE</h1>
+                    <div class="subtitle">Master's in Artificial Intelligence</div>
+                    <div style="font-size: 1.2rem; color: var(--primary); margin-bottom: 2.5rem;">AI & ML Expert | Deep Learning Specialist | Robotics Engineer</div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">10+</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">AI Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">3+</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div style="font-size: 2.5rem; font-weight: 800; background: var(--gradient-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">15+</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Technologies</div>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <!-- <button class="btn btn-secondary" onclick="showPage('mentoring')">🎓 Mentoring Sessions</button> -->
+
+                    </div>
+                </div>
+                <div>
+                    <img src="Portfolio.JPG" alt="Pranit Kamble" class="profile-img" onerror="this.src='https://via.placeholder.com/400/667eea/ffffff?text=PRANIT'">
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ABOUT ME</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🤖 AI & ML Expert</h3>
+                        <p>Master's in Artificial Intelligence from Queen Mary University of London. Specialized in Deep learning, Neural networks, Computer Vision.</p>
+                    </div>
+                    <div class="card">
+                        <h3>IOT </h3>
+                        <p>Passionate and created IOT Devices for wellbeing of Society. Combining technical expertise with design thinking.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 Innovation Driven</h3>
+                        <p>Constantly exploring new technologies. From robotics to AI, creating impactful solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <div class="section-title">
+                    <h2>SKILLS & EXPERTISE</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🤖 AI & Machine Learning</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Deep Learning</span><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>👁️ Computer Vision</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Object Detection</span><span class="skill-tag">YOLO</span><span class="skill-tag">OpenCV</span><span class="skill-tag">CNN</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>🔗 IoT & Robotics</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Arduino</span><span class="skill-tag">Raspberry Pi</span><span class="skill-tag">ROS</span><span class="skill-tag">Automation</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>💻 Programming</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">C++</span><span class="skill-tag">SQL</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Data Analytics</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Data Viz</span><span class="skill-tag">Big Data</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>🎨 Design & UI/UX</h3>
+                        <div style="text-align: center;"><span class="skill-tag">Figma</span><span class="skill-tag">UI Design</span><span class="skill-tag">Web Design</span><span class="skill-tag">Prototyping</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <div class="section-title">
+                    <h2>EDUCATION</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div style="font-family: 'Orbitron'; color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">2024-2025 (Completed)</div>
+                            <h3>Master's in Artificial Intelligence</h3>
+                            <h4 style="color: var(--text-gray); margin-bottom: 1rem;">Queen Mary University of London</h4>
+                            <p>Specialized in deep learning, computer vision, and NLP with distinction.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div style="font-family: 'Orbitron'; color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">Present</div>
+                            <h3>AI & Robotics Research</h3>
+                            <h4 style="color: var(--text-gray); margin-bottom: 1rem;">SINREM</h4>
+                            <p>Autonomous systems and intelligent control research.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div style="font-family: 'Orbitron'; color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">Experience</div>
+                            <h3>Technical Role</h3>
+                            <h4 style="color: var(--text-gray); margin-bottom: 1rem;">Collegedunia</h4>
+                            <p>AI-powered educational technology solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <h2>FEATURED PROJECTS</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🧠 Advanced Neural Network Framework</h3>
+                        <p>40% faster inference with 98% accuracy.</p>
+                        <div style="text-align: center; margin-top: 1rem;"><span class="skill-tag">PyTorch</span><span class="skill-tag">CUDA</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>👁️ Real-Time Object Detection Without Privacy Inavsion</h3>
+                        <p>Thermal Based-based detector on autonomous platforms.</p>
+                        <div style="text-align: center; margin-top: 1rem;"><span class="skill-tag">Computer Vision</span><span class="skill-tag">YOLO</span></div>
+                    </div>
+                    <div class="card">
+                        <h3>💬 AI Chatbot with NLP</h3>
+                        <p>Transformer models with context awareness.</p>
+                        <div style="text-align: center; margin-top: 1rem;"><span class="skill-tag">NLP</span><span class="skill-tag">BERT</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>GET IN TOUCH</h2>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:pranitkambleofficial@gmail.com" style="color: var(--primary);">pranitkambleofficial@gmail.com</a></p>
+                    </div>
+                    <div class="card">
+                        <h3>📱 Phone</h3>
+                        <p>+91 9359459188<br>+44 7823781644</p>
+                    </div>
+                    <div class="card">
+                        <h3>💼 LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/pranit-kamble-a54230253/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">pranit-kamble-a54230253</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MENTORING PAGE -->
+    <div id="mentoring" class="page">
+        <section style="padding-top: 150px; min-height: 100vh; display: flex; align-items: center;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Master's Preparation Mentoring</h2>
+                    <p>Get personalized guidance from an AI Master's graduate</p>
+                </div>
+                <div class="grid" style="margin-bottom: 5rem;">
+                    <div class="card">
+                        <h3>📝 Statement of Purpose</h3>
+                        <p>Craft compelling SOPs for top universities.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎯 University Selection</h3>
+                        <p>Strategic guidance for USA, UK, Canada, Australia.</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Application Strategy</h3>
+                        <p>Custom timeline and strategy.</p>
+                    </div>
+                    <div class="card">
+                        <h3>💡 Career Guidance</h3>
+                        <p>Identify specializations aligned with your goals.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🗣️ Interview Prep</h3>
+                        <p>Mock interviews and tips.</p>
+                    </div>
+                    <div class="card">
+                        <h3>💰 Funding & Scholarships</h3>
+                        <p>Explore funding options.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Mentoring Packages</h2>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter Pack</h3>
+                        <div class="price">₹2,999</div>
+                        <ul class="features-list">
+                            <li>1-on-1 session</li>
+                            <li>Application review</li>
+                            <li>University recommendations</li>
+                            <li>Email support</li>
+                        </ul>
+                        <button class="btn btn-secondary" onclick="openBooking('Starter', 2999)" style="width: 100%;">Book Now</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">POPULAR</div>
+                        <h3>Professional Package</h3>
+                        <div class="price">₹7,999</div>
+                        <ul class="features-list">
+                            <li>4 sessions</li>
+                            <li>SOP writing</li>
+                            <li>Interview prep</li>
+                            <li>LinkedIn optimization</li>
+                            <li>60-day support</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openBooking('Professional', 7999)" style="width: 100%;">Book Now</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Premium Plus</h3>
+                        <div class="price">₹14,999</div>
+                        <ul class="features-list">
+                            <li>8 sessions</li>
+                            <li>Weekly calls</li>
+                            <li>Interview bootcamp</li>
+                            <li>Scholarship hunting</li>
+                            <li>Lifetime support</li>
+                        </ul>
+                        <button class="btn btn-secondary" onclick="openBooking('Premium', 14999)" style="width: 100%;">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container" style="max-width: 900px;">
+                <div class="section-title">
+                    <h2>FAQ</h2>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's included in each package?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All features mentioned for each package are included - SOP review, document editing, interview prep, email support.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is 100% refund possible?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! 100% refund within 24 hours if unsatisfied. No questions asked.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I reschedule sessions?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, up to 48 hours before your session.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What payment methods accepted?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>UPI, Credit/Debit Cards, Net Banking, PayPal, PhonePe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Pranit Kamble. Master's in AI from QMUL. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const pageElement = document.getElementById(page);
+            if (pageElement) {
+                pageElement.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function scrollToSection(id) {
+            showPage('portfolio');
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute("data-theme", newTheme);
+            try {
+                localStorage.setItem('pk-theme', newTheme);
+            } catch(e) {
+                console.log('localStorage not available');
+            }
+            
+            updateThemeButton(newTheme);
+        }
+
+        function updateThemeButton(theme) {
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            updateThemeButton(currentTheme);
+        });
+
+        let currentBookingPrice = 0;
+
+        function openBooking(packageName, price) {
+            currentBookingPrice = price;
+            document.getElementById('package').value = packageName;
+            document.getElementById('amountDisplay').textContent = '₹' + price.toLocaleString();
+            document.getElementById('bookingModal').classList.add('active');
+        }
+
+        function closeBooking() {
+            document.getElementById('bookingModal').classList.remove('active');
+            resetBookingForm();
+        }
+
+        function updatePrice() {
+            const select = document.getElementById('package');
+            const priceMap = {
+                'Starter': 2999,
+                'Professional': 7999,
+                'Premium': 14999
+            };
+            
+            const selectedPrice = priceMap[select.value] || 0;
+            currentBookingPrice = selectedPrice;
+            document.getElementById('amountDisplay').textContent = '₹' + selectedPrice.toLocaleString();
+        }
+
+        function resetBookingForm() {
+            document.getElementById('package').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('targets').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('time').value = '';
+            document.getElementById('amountDisplay').textContent = '₹0';
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const packageName = document.getElementById('package').value;
+            const targets = document.getElementById('targets').value.trim();
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            if (!name || !email || !phone || !packageName || !targets || !date || !time) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const bookingData = {
+                name,
+                email,
+                phone,
+                package: packageName,
+                amount: currentBookingPrice,
+                targets,
+                date,
+                time,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('Booking submitted:', bookingData);
+
+            closeBooking();
+            showPaymentModal();
+        }
+
+        function showPaymentModal() {
+            document.getElementById('paymentModal').classList.add('active');
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        function copyText(text) {
+            try {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('UPI ID copied to clipboard!');
+                }).catch(() => {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    alert('UPI ID copied to clipboard!');
+                });
+            } catch (e) {
+                alert('Failed to copy: ' + text);
+            }
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.closest('.faq-item');
+            if (faqItem) {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                faqItem.classList.toggle('active');
+            }
+        }
+
+        function openPhonePe() {
+            const phonePeUrl = `https://phonepe.com/`;
+            window.open(phonePeUrl, '_blank');
+            alert('Please send payment to: +91 9359459188 on PhonePe');
+        }
+
+        window.addEventListener('click', function(event) {
+            const bookingModal = document.getElementById('bookingModal');
+            const paymentModal = document.getElementById('paymentModal');
+
+            if (event.target === bookingModal) {
+                closeBooking();
+            }
+            if (event.target === paymentModal) {
+                closePayment();
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const bookingModal = document.getElementById('bookingModal');
+                const paymentModal = document.getElementById('paymentModal');
+                
+                if (bookingModal.classList.contains('active')) {
+                    closeBooking();
+                }
+                if (paymentModal.classList.contains('active')) {
+                    closePayment();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
